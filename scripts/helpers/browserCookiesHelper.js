@@ -8,6 +8,10 @@ export class BrowserCookiesManager {
     return matches ? decodeURIComponent(matches[1]) : undefined;
   }
 
+  cookieExists(name) {
+    return this.getCookie(name) !== undefined;
+  }
+
   setCookie(name, value, options = {}) {
     options = {
       path: "/",
