@@ -15,7 +15,7 @@ export class Game {
 
     this.score = 0;
 
-    if (this.browserCookiesManager.getCookie("banana-clicks") === undefined) {
+    if (!this.browserCookiesManager.cookieExists("banana-clicks")) {
       this.browserCookiesManager.setCookie("banana-clicks", this.score);
     } else {
       this.score = this.browserCookiesManager.getCookie("banana-clicks");
@@ -27,7 +27,8 @@ export class Game {
     });
     this.containers.forEach((container) => this.app.stage.addChild(container));
 
-    this.banana = new PIXI.Sprite(this.assets.banana);
+    this.bananaTexture = PIXI.Texture.from("../../assets/banana.png");
+    this.banana = new PIXI.Sprite(this.bananaTexture);
     this.banana.anchor.set(0.5);
     this.banana.scale.set(0.5);
     this.banana.position.set(
@@ -47,7 +48,7 @@ export class Game {
     this.app.stage.on("pointertap", () => {
       this.score++;
       this.browserCookiesManager.setCookie("banana-clicks", this.score);
-      this.scoreText.text = this.score; // this.scoreText.updateText(this.score);
+      this.scoreText.text = this.score;
     });
   }
 
