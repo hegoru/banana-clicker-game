@@ -1,0 +1,13 @@
+:root {
+  --clr-yellow-green: #8b8001;
+}
+
+body {
+  background-color: var(--clr-yellow-green);
+
+  margin: 0;
+}
+
+canvas {
+  display: block;
+}
